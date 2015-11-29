@@ -205,7 +205,7 @@ In a nutshell Stripe is the PayPal you always imagined, made with developers in 
 
 After Stripe has verified someone's credit card your website will receive a token back, this token then needs to be sent to Stripe along with your secret key. Since your key is secret this can't happen on the front-end, because JavaScript wasn't and isn't meant to be, at least in its original form,  secure. To do this you can use one of Stripe's libraries for [PHP](https://stripe.com/docs/checkout/guides/php), [Sinatra](https://stripe.com/docs/checkout/guides/sinatra), [Python(Flask)](https://stripe.com/docs/checkout/guides/flask) or [Rails](https://stripe.com/docs/checkout/guides/rails).
 
-I mentioned keys right? Well to get a key you need to [sign up](https://stripe.com/) for a free Stripe account. You don't even need a credit card yourself, a plain old bank account will do! 
+I mentioned keys right? Well to get a key you need to [sign up](https://stripe.com/) for a free Stripe account. You don't even need a credit card yourself, a plain old bank account will do! After you get your own key you will have to replace your public key with mine when calling Stripe (as shown below). They offer Test and 'Real' keys so you easily test your application with little effort, when using test keys Stripe will also except test credit cards.
 
 Everything should be working up to the point when you click on the donate button, and nothing happens. Let's add the last bit of magic. 
 ```javascript
@@ -216,7 +216,7 @@ Everything should be working up to the point when you click on the donate button
 This component will launch Stripe for us. In order to do this we first have to create a Stripe instance at the top of our document (not within a component).
 ```javascript
 	var handler = StripeCheckout.configure({
-	key: 'pk_test_hue7wHe5ri0xzDRsBSZ9IBEC',
+	key: 'pk_test_hue7wHe5ri0xzDRsBSZ9IBEC', //replace this with your key!
 	image: 'http://freedesignfile.com/upload/2014/06/Cup-of-coffee-design-vector-material-03.jpg',
 	locale: 'auto',
 	token: function(token) {
